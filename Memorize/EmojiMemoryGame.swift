@@ -10,6 +10,8 @@ import SwiftUI
 
 class EmojiMemeoryGame: ObservableObject{
     
+    typealias Card = MemoryGame<String>.Card
+    
     static let  emojis = ["🚗","✈️","🚚","🛵","🚀","⛱","🏰","🏟","⛵️","🚁","🚢","🚧","🛣","📺","🛳","🚍"]
     
     static func createMemoryGame(numberOfPairs: Int) -> MemoryGame<String>{
@@ -18,7 +20,7 @@ class EmojiMemeoryGame: ObservableObject{
         }
     }
     
-    @Published private(set) var model:MemoryGame<String> = createMemoryGame(numberOfPairs: 4)
+    @Published private(set) var model:MemoryGame<String> = createMemoryGame(numberOfPairs: 6)
     
     var cards: [MemoryGame<String>.Card] {
         model.cards
