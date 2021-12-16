@@ -23,7 +23,7 @@ struct EmojiMemoryGameView: View {
     @ViewBuilder
     private func cardView(for card:  EmojiMemeoryGame.Card) -> some View{
         if card.isMatched && !card.isFaceUp{
-            Rectangle().opacity(0)
+            Rectangle().opacity(0.1)
         }else{
             CardView(card: card)
                 .padding(4)
@@ -68,41 +68,6 @@ struct CardView : View {
         static let fontScale: CGFloat = 0.75
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 struct ContentView_Previews: PreviewProvider {

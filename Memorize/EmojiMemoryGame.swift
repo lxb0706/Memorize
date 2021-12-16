@@ -15,19 +15,20 @@ class EmojiMemeoryGame: ObservableObject{
     static let  emojis = ["🚗","✈️","🚚","🛵","🚀","⛱","🏰","🏟","⛵️","🚁","🚢","🚧","🛣","📺","🛳","🚍"]
     
     static func createMemoryGame(numberOfPairs: Int) -> MemoryGame<String>{
-        MemoryGame<String>(numberOfPairsOfCards: numberOfPairs) { pairIndex in
-            emojis[pairIndex]
-        }
+        MemoryGame(numberOfPairsOfCards: numberOfPairs) { emojis[$0] }
     }
+
+    @Published private(set) var model = createMemoryGame(numberOfPairs: 10)
     
-    @Published private(set) var model:MemoryGame<String> = createMemoryGame(numberOfPairs: 6)
+//    @Published private(set) var model: MemoryGame<String> = {
+//        MemoryGame(numberOfPairsOfCards: 10) { emojis[$0] }
+//    }()
     
-    var cards: [MemoryGame<String>.Card] {
+    var cards: [Card] {
         model.cards
     }
     
-    
-    func choose(_ card: MemoryGame<String>.Card){
+    func choose(_ card: Card){
         model.choose(card)
     }
 }
