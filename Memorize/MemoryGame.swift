@@ -43,7 +43,7 @@ struct MemoryGame<CardContent> where CardContent:Equatable {
             cards.append(Card(content: cardContent, id: pairIndex * 2))
             cards.append(Card(content: cardContent, id: pairIndex * 2+1))
         }
-        self.cards = cards.shuffled()
+        self.cards = cards//.shuffled()
     }
     
     
