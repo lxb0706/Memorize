@@ -13,18 +13,16 @@ struct EmojiMemoryGameView: View {
     
     var body: some View {
         
-        AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
-           cardView(for: card)
-        }
-        .foregroundColor(.red)
-        .padding(.horizontal)
+        AspectVGrid(items: game.cards, aspectRatio: 2/3, content: cardView)
+            .foregroundColor(.red)
+            .padding(.horizontal)
     }
     
-    @ViewBuilder
-    private func cardView(for card:  EmojiMemeoryGame.Card) -> some View{
-        if card.isMatched && !card.isFaceUp{
+    
+    @ViewBuilder private func cardView(for card:  EmojiMemeoryGame.Card) -> some View{
+        if card.isMatched && !card.isFaceUp {
             Rectangle().opacity(0.1)
-        }else{
+        } else {
             CardView(card: card)
                 .padding(4)
                 .onTapGesture {
